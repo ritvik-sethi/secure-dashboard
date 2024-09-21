@@ -43,7 +43,7 @@ This project is an authentication application built using React with TypeScript 
 
 ## Installation
 
-To set up the project locally, follow these steps:
+To set up the project locally, follow these steps :
 
 1. Clone the repository:
    git clone url
