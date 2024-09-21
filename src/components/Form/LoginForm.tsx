@@ -3,7 +3,7 @@ import { Header } from "./Header.tsx";
 import { Email } from "./Email.tsx";
 import { Password } from "./Password.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "../../app/features/user/userSlice.ts"; 
+import { clearErrors, logIn } from "../../app/features/user/userSlice.ts"; 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ interface FormData {
 export const LoginForm: React.FC = () => {
   const dispatch: any = useDispatch();
   const user = useSelector((state: any) => state.user.user);
-  const loginError = useSelector((state: any) => state.user.error);
+  const loginError = useSelector((state: any) => state.user.loginError);
   
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
   const navigate = useNavigate()
@@ -32,7 +32,8 @@ export const LoginForm: React.FC = () => {
   };
   useEffect(()=>{
     localStorage.setItem('token', '');
-   },[])
+    dispatch(clearErrors())
+   },[dispatch])
    useEffect(() => {
     if (user && user.token) {
       setTimeout(()=>{

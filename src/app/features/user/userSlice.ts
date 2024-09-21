@@ -13,14 +13,16 @@ interface UserState {
   user: User | null; 
   editUser: User | null;
   loading: boolean;
-  error: string | null;
+  loginError: string | null;
+  signupError: string | null;
 }
 
 const initialState: UserState = {
   user: null,
   editUser: null,
   loading: false,
-  error: null,
+  loginError: null,
+  signupError:null,
 };
 
 export const userSlice = createSlice({
@@ -29,7 +31,7 @@ export const userSlice = createSlice({
   reducers: {
     signUpRequest: (state) => {
       state.loading = true;
-      state.error = null;
+      state.signupError = null;
     },
     signUpSuccess: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
@@ -37,7 +39,7 @@ export const userSlice = createSlice({
     },
     signUpFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
-      state.error = action.payload;
+      state.signupError = action.payload;
     },
     clear: (state) => {
       state.user = null;
@@ -47,7 +49,7 @@ export const userSlice = createSlice({
     },
     logInRequest: (state) => {
       state.loading = true;
-      state.error = null;
+      state.loginError = null;
     },
     logInSuccess: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
@@ -55,8 +57,12 @@ export const userSlice = createSlice({
     },
     logInFailure: (state, action: PayloadAction<string>) => {
       state.loading = false;
-      state.error = action.payload;
+      state.loginError = action.payload;
     },
+    clearErrors: (state) =>{
+      state.loginError = null;
+      state.signupError = null;
+    }
   },
 });
 
@@ -69,6 +75,7 @@ export const {
   logInRequest,
   logInSuccess,
   logInFailure,
+  clearErrors
 } = userSlice.actions;
 
 export default userSlice.reducer;

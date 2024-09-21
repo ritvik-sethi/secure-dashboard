@@ -24,7 +24,8 @@ describe('User Slice', () => {
       user: null,
       editUser: null,
       loading: false,
-      error: null,
+      loginError: null,
+      signupError: null
     });
   });
 
@@ -32,7 +33,7 @@ describe('User Slice', () => {
     store.dispatch(signUpRequest());
     const state = store.getState().user;
     expect(state.loading).toBe(true);
-    expect(state.error).toBe(null);
+    expect(state.signupError).toBe(null);
   });
 
   it('should handle signUpSuccess', () => {
@@ -47,14 +48,14 @@ describe('User Slice', () => {
     store.dispatch(signUpFailure('Signup failed'));
     const state = store.getState().user;
     expect(state.loading).toBe(false);
-    expect(state.error).toBe('Signup failed');
+    expect(state.signupError).toBe('Signup failed');
   });
 
   it('should handle logInRequest', () => {
     store.dispatch(logInRequest());
     const state = store.getState().user;
     expect(state.loading).toBe(true);
-    expect(state.error).toBe(null);
+    expect(state.loginError).toBe(null);
   });
 
   it('should handle logInSuccess', () => {
@@ -69,7 +70,7 @@ describe('User Slice', () => {
     store.dispatch(logInFailure('Login failed'));
     const state = store.getState().user;
     expect(state.loading).toBe(false);
-    expect(state.error).toBe('Login failed');
+    expect(state.loginError).toBe('Login failed');
   });
 });
 
@@ -93,7 +94,7 @@ describe('Async Actions', () => {
     await mock.onPost('http://localhost:5000/signup').reply(200, response);
     store.dispatch(signUp(userData));
     expect(state.loading).toBe(false);
-    expect(state.error).toBe(null);
+    expect(state.signupError).toBe(null);
   });
   it('should dispatch logIn actions on successful login', async () => {
     const credentials = { email: 'test@example.com', password: 'password' };
@@ -103,6 +104,6 @@ describe('Async Actions', () => {
     await mock.onPost('http://localhost:5000/login').reply(200, response);
     store.dispatch(logIn(credentials));
     expect(state.loading).toBe(false);
-    expect(state.error).toBe(null);
+    expect(state.loginError).toBe(null);
   });
 });

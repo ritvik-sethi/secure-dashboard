@@ -5,7 +5,7 @@ import {LastName} from "./LastName.tsx";
 import {Email} from "./Email.tsx";
 import {Password} from "./Password.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../../app/features/user/userSlice.ts";
+import { clearErrors, signUp } from "../../app/features/user/userSlice.ts";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +18,7 @@ interface FormData {
 
 export const Form: React.FC = () => {  
   const navigate = useNavigate()
-  const loginError = useSelector((state: any) => state.user.error);
+  const loginError = useSelector((state: any) => state.user.signupError);
   const dispatch: any = useDispatch();
   const user = useSelector((state: any) => state.user.user);
   const {
@@ -41,7 +41,8 @@ const handleSignUp = async (data: FormData) => {
 
  useEffect(()=>{
   localStorage.setItem('token', '');
- },[])
+  dispatch(clearErrors())
+ },[dispatch])
   useEffect(() => {
     if (user && user.token) {
       setTimeout(()=>{
