@@ -52,4 +52,5 @@ To set up the project locally, follow these steps :
    npm i or npm install
 
 3. To run
+   checkout to develop branch
    npm start
