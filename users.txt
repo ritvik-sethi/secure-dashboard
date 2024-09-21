@@ -1,0 +1,98 @@
+[
+  {
+    "email": "itvk@gma.com",
+    "password": "123456789",
+    "firstName": "ritvik",
+    "lastName": "sethi"
+  },
+  {
+    "email": "sdsss@dsd.com",
+    "password": "sdsdsdsdsds",
+    "firstName": "ritvijs",
+    "lastName": "bisius"
+  },
+  {
+    "email": "ritviksethi56@gmail.com",
+    "password": "Password12",
+    "firstName": "ritvik",
+    "lastName": "sethi"
+  },
+  {
+    "email": "123@gmail.com",
+    "password": "passssssssss",
+    "firstName": "ritvikk",
+    "lastName": "sethi"
+  },
+  {
+    "email": "r@b.c",
+    "password": "122345679",
+    "firstName": "rit",
+    "lastName": "cik"
+  },
+  {
+    "email": "asas@aas.c",
+    "password": "asasasasasasasas",
+    "firstName": "asasa",
+    "lastName": "asas"
+  },
+  {
+    "email": "assa@as.co",
+    "password": "sasasasasasasas",
+    "firstName": "asasa",
+    "lastName": "asasas"
+  },
+  {
+    "email": "asasas@as.com",
+    "password": "asasasasas",
+    "firstName": "asas",
+    "lastName": "sasasa"
+  },
+  {
+    "email": "ritviksethi45@gmail.com",
+    "password": "Password12",
+    "firstName": "ritvik",
+    "lastName": "sethi"
+  },
+  {
+    "email": "sasa@asa.xas",
+    "password": "sasasasasasasaa",
+    "firstName": "asada",
+    "lastName": "sdsds"
+  },
+  {
+    "email": "s@s.s",
+    "password": "sasasasasasas",
+    "firstName": "sasa",
+    "lastName": "sasas"
+  },
+  {
+    "email": "das@sas.ca",
+    "password": "sasasasasasasa",
+    "firstName": "asa",
+    "lastName": "asasa"
+  },
+  {
+    "email": "asa@asa.c",
+    "password": "sasasasaassassa",
+    "firstName": "ritviks",
+    "lastName": "sasas"
+  },
+  {
+    "email": "ritviksethi909@gamilc.com",
+    "password": "avdisavduivdsdiuvdsuio",
+    "firstName": "asasas",
+    "lastName": "asasas"
+  },
+  {
+    "email": "ritviksethi565@gmail.com",
+    "password": "Password12",
+    "firstName": "ritvik",
+    "lastName": "sethi"
+  },
+  {
+    "email": "itvk@gsma.com",
+    "password": "123456789",
+    "firstName": "ritvik",
+    "lastName": "sethi"
+  }
+]
