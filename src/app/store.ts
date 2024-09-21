@@ -9,8 +9,5 @@ export const store = configureStore({
   },
 });
 
-// Define RootState type for use in selectors and hooks
 export type RootState = ReturnType<typeof store.getState>;
-
-// Define AppDispatch type for use in dispatching actions
 export type AppDispatch = typeof store.dispatch;

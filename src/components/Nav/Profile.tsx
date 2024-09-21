@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 export const Profile: React.FC = () => {
-  // redux
   const user = useSelector((state: any) => state?.user?.user); 
   const location = useLocation()
   return (

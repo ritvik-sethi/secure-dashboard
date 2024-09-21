@@ -1,14 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMode } from "../../app/features/mode/modeSlice.ts";
-//@ts-ignore
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
-import { RootState } from "../../app/store"; // Adjust based on your store's path
+import { RootState } from "../../app/store"; 
 
 export const Tabs: React.FC = () => {
-  // redux
   const dispatch = useDispatch();
-  const mode = useSelector((state: RootState) => state.mode.mode); // Typed selector
+  const mode = useSelector((state: RootState) => state.mode.mode);
 
   return (
     <div className="flex-1 text-gray-500 dark:text-gray-400 font-semibold text-sm">

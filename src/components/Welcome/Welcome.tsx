@@ -1,14 +1,13 @@
 import React from "react";
-import {Picture} from "./Picture.tsx";
-import {Buttons} from "./Buttons.tsx";
+//@ts-ignore
+import { UserInfo } from "./UserInfo.tsx";
+import { LogoutButton } from "./LogoutButton.tsx";
 
 export const Welcome: React.FC = () => {
   return (
     <div className="w-fit mx-auto h-fit flex flex-col items-center">
-      <Picture />
-      <Buttons />
+      <UserInfo />
+      <LogoutButton />
     </div>
   );
 };
-
-

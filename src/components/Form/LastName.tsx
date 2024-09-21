@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-//@ts-ignore
 import { UserIcon } from "@heroicons/react/solid";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-// Define a type for the form data
+
 interface FormData {
   firstName: string;
   lastName: string;
@@ -12,15 +11,12 @@ interface FormData {
 }
 
 interface LastNameProps {
-  register: UseFormRegister<FormData>; // Specify the correct form data type
+  register: UseFormRegister<FormData>;
   errors: FieldErrors<FormData>;
 }
 
 export const LastName: React.FC<LastNameProps> = ({ register, errors }) => {
-  // Active style state
   const [active, setActive] = useState(false);
-
-  // Error color for lastName
   const errColor = !errors.lastName
     ? "dark:text-white text-gray-800"
     : "dark:text-red-300 text-red-500";

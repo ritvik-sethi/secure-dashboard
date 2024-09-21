@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-//@ts-ignore
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-// Define a type for the form data
 interface FormData {
   firstName: string;
   lastName: string;
@@ -12,18 +10,16 @@ interface FormData {
 }
 
 interface PasswordProps {
-  register: UseFormRegister<FormData>; // Specify the correct form data type
+  register: UseFormRegister<FormData>; 
   errors: FieldErrors<FormData>;
 }
 
 export const Password: React.FC<PasswordProps> = ({ register, errors }) => {
-  // Show password and active style
   const [states, setStates] = useState<{ show: boolean; active: boolean }>({
     show: false,
     active: false,
   });
 
-  // Error color for password
   const errColor = !errors.password
     ? "dark:text-white text-gray-800"
     : "dark:text-red-300 text-red-500";

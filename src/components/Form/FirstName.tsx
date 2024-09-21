@@ -3,7 +3,7 @@ import { UserIcon } from "@heroicons/react/solid";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 interface FirstNameProps {
-  register: UseFormRegister<any>; // Specify the type of your form data if known
+  register: UseFormRegister<any>; 
   errors: FieldErrors;
 }
 

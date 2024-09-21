@@ -1,60 +1,50 @@
 import React, { useEffect } from "react";
-import {Header} from "./Header.tsx";
-import {Email} from "./Email.tsx";
-import {Password} from "./Password.tsx";
+import { Header } from "./Header.tsx";
+import { Email } from "./Email.tsx";
+import { Password } from "./Password.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "../../app/features/user/userSlice.ts";
+import { logIn } from "../../app/features/user/userSlice.ts"; 
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string
 }
 
 export const LoginForm: React.FC = () => {
-  const dispatch = useDispatch();
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>();
+  const dispatch: any = useDispatch();
+  const user = useSelector((state: any) => state.user.user);
+  const loginError = useSelector((state: any) => state.user.error);
+  
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
+  const navigate = useNavigate()
 
-  // submit form
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
-    try {
-        fetch('https://dummyjson.com/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              username: 'emilys',
-              password: 'emilyspass'
-            }),
-            credentials: 'include' // Include cookies (e.g., accessToken) in the request
-          })
-          .then(res => res.json())
-          .then(console.log);
-      // Dispatching the logIn action with the response data
-
-    } catch (error) {
-      console.error('Login failed:', error);
-    }
+  const handleLogIn = async (data: FormData) => {
+    const credentials = { email: data.email, password: data.password };
+    await dispatch(logIn(credentials)); 
   };
 
-  // get latest info for editing
-  const editUser = useSelector((state: any) => state.user.editUser);
-
-  // set values on edit info event
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    handleLogIn(data); 
+  };
+  useEffect(()=>{
+    localStorage.setItem('token', '');
+   },[])
+   useEffect(() => {
+    if (user && user.token) {
+      setTimeout(()=>{
+        navigate('/dashboard');
+      },1000)
+    }
+  }, [user, navigate]);
   useEffect(() => {
-    if (editUser.length === 0) return;
-    setValue("email", editUser.email || "", { shouldValidate: true });
-    setValue("password", editUser.password || "", { shouldValidate: true });
-  }, [editUser, setValue]);
-
+    if (!!loginError) {
+     alert('Incorrect Email or Password')
+    }
+  }, [loginError]);
   return (
     <div className="container mt-12 md:mt-24 mx-auto md:px-20 px-5">
       <Header />

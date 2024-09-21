@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-//@ts-ignore
 import { AtSymbolIcon } from "@heroicons/react/solid";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 interface EmailProps {
-  register: UseFormRegister<any>; // Replace `any` with your form data type
+  register: UseFormRegister<any>;
   errors: FieldErrors;
 }
 
 export const Email: React.FC<EmailProps> = ({ register, errors }) => {
-  // active style
   const [active, setActive] = useState(false);
-
-  // error color for email
   const errColor = !errors.email
     ? "dark:text-white text-gray-800"
     : "dark:text-red-300 text-red-500";

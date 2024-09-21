@@ -7,6 +7,7 @@ import {Password} from "./Password.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../app/features/user/userSlice.ts";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   firstName: string;
@@ -15,31 +16,44 @@ interface FormData {
   password: string;
 }
 
-export const Form: React.FC = () => {
-  const dispatch = useDispatch();
+export const Form: React.FC = () => {  
+  const navigate = useNavigate()
+  const loginError = useSelector((state: any) => state.user.error);
+  const dispatch: any = useDispatch();
+  const user = useSelector((state: any) => state.user.user);
   const {
     register,
     handleSubmit,
-    setValue,
     reset,
     formState: { errors },
   } = useForm<FormData>();
 
-  // submit form
-  const onSubmit: SubmitHandler<FormData> = (data: any) => dispatch(signUp(data));
+const handleSignUp = async (data: FormData) => {
+  const credentials = {
+    email: data.email,
+    password: data.password,
+    firstName: data.firstName,
+    lastName: data.lastName,
+  };
+  await dispatch(signUp(credentials));
+};
+ const onSubmit: SubmitHandler<FormData> = (data: any) =>  handleSignUp(data);
 
-  // get latest info for editing
-  const editUser = useSelector((state: any) => state.user.editUser);
-
-  // set values on edit info event
+ useEffect(()=>{
+  localStorage.setItem('token', '');
+ },[])
   useEffect(() => {
-    if (editUser.length === 0) return;
-    setValue("firstName", editUser.firstName || "", { shouldValidate: true });
-    setValue("lastName", editUser.lastName || "", { shouldValidate: true });
-    setValue("email", editUser.email || "", { shouldValidate: true });
-    setValue("password", editUser.password || "", { shouldValidate: true });
-  }, [editUser, setValue]);
-
+    if (user && user.token) {
+      setTimeout(()=>{
+        navigate('/dashboard');
+      },1000)
+    }
+  }, [user, navigate]);
+  useEffect(() => {
+    if (!!loginError) {
+     alert('User Already Exists')
+    }
+  }, [loginError]);
   return (
     <div className="container mt-12 md:mt-24 mx-auto md:px-20 px-5">
       <Header />
