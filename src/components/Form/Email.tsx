@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AtSymbolIcon } from "@heroicons/react/solid";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { EMAIL } from "../../constants.ts";
 
 interface EmailProps {
   register: UseFormRegister<any>;
@@ -17,10 +18,12 @@ export const Email: React.FC<EmailProps> = ({ register, errors }) => {
     <div
       onFocus={() => setActive(true)}
       onBlur={() => setActive(false)}
-      className={`form__inputs col-span-2 my-4 ${active ? "input__active" : ""}`}
+      className={`form__inputs col-span-2 my-4 ${
+        active ? "input__active" : ""
+      }`}
     >
       <label htmlFor="email">
-        <span>Email</span>
+        <span>{EMAIL}</span>
         <small className="dark:text-red-400 text-red-600 ml-2 text-xs">
           {errors.email && "*" + errors.email.message}
         </small>

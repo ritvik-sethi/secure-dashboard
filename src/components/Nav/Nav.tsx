@@ -1,6 +1,6 @@
 import React from "react";
-import {Profile} from "./Profile.tsx";
-import {Tabs} from "./Tabs.tsx";
+import { Profile } from "./Profile.tsx";
+import { Tabs } from "./Tabs.tsx";
 
 export const Nav: React.FC = () => {
   return (

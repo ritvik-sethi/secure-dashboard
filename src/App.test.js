@@ -20,7 +20,7 @@ describe("App Component", () => {
   beforeEach(() => {
     store = mockStore({
       mode: {
-        mode: false, // Change to true to test dark mode
+        mode: false, 
       },
     });
   });

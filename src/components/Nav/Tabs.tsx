@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMode } from "../../app/features/mode/modeSlice.ts";
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
-import { RootState } from "../../app/store"; 
+import { RootState } from "../../app/store";
+import { ABOUT, CONTACT_ME } from "../../constants.ts";
 
 export const Tabs: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const Tabs: React.FC = () => {
           rel="noopener noreferrer"
           aria-label="About WebReInvent website"
         >
-          About
+          {ABOUT}
         </a>
       </span>
       <span className="cursor-pointer px-5 md:inline hidden">
@@ -27,7 +28,7 @@ export const Tabs: React.FC = () => {
           rel="noopener noreferrer"
           aria-label="Contact me"
         >
-          Contact Me
+          {CONTACT_ME}
         </a>
       </span>
       <span

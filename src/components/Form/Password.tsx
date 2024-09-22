@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { PASSWORD } from "../../constants.ts";
 
 interface FormData {
   firstName: string;
@@ -10,7 +11,7 @@ interface FormData {
 }
 
 interface PasswordProps {
-  register: UseFormRegister<FormData>; 
+  register: UseFormRegister<FormData>;
   errors: FieldErrors<FormData>;
 }
 
@@ -28,10 +29,12 @@ export const Password: React.FC<PasswordProps> = ({ register, errors }) => {
     <div
       onFocus={() => setStates((prev) => ({ ...prev, active: true }))}
       onBlur={() => setStates((prev) => ({ ...prev, active: false }))}
-      className={`form__inputs col-span-2 ${states.active ? "input__active" : ""}`}
+      className={`form__inputs col-span-2 ${
+        states.active ? "input__active" : ""
+      }`}
     >
       <label htmlFor="password">
-        <span>Password</span>
+        <span>{PASSWORD}</span>
         <small className="dark:text-red-400 text-red-600 ml-2 text-xs">
           {errors.password && "*" + errors.password.message}
         </small>
@@ -58,4 +61,3 @@ export const Password: React.FC<PasswordProps> = ({ register, errors }) => {
     </div>
   );
 };
-
