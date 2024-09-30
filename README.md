@@ -26,7 +26,7 @@ This project is an authentication application built using React with TypeScript 
 - **Testing**: Utilized Jest and React Testing Library (RTL) for unit and integration testing.
 
 ### Backend
-- **Node.js and Express.js**: Used to create a RESTful API for user authentication.
+- **Node.js and Express.js**: Used to create RESTful API for user authentication.
 - **fs Module**: Used for reading and writing user data to a text file, which is treated as the database.
 
 ## Technologies Used
